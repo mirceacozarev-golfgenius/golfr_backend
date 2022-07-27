@@ -27,6 +27,7 @@ describe Api::UsersController, type: :controller do
   describe 'GET show' do
     before :each do
       @user = create(:user, email: 'user@email.com', password: 'foobar', name: 'User')
+      sign_in(@user, scope: :user)
     end
 
     it 'should return the user if valid id' do

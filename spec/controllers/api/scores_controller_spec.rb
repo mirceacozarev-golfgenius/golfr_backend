@@ -37,6 +37,9 @@ describe Api::ScoresController, type: :request do
       response_hash = JSON.parse(response.body)
       scores = response_hash['scores']
       expect(scores.size).to eq 25
+      scores.each_cons(2) do |score1, score2|
+        expect(score1['played_at']).to be >= score2['played_at']
+      end
     end
   end
 

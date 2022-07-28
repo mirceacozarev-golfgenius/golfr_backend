@@ -33,12 +33,8 @@ module Api
       user = User.find(params[:id])
 
       render json: {
-        user: {
-          id: user.id,
-          email: user.email,
-          name: user.name
-        }
-      }
+        user: user.serialize
+      }.to_json
     end
   end
 end
